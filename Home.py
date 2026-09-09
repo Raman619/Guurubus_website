@@ -28,7 +28,7 @@ login_button = wait.until(
 login_button.click()
 
 # Wait for page after login
-time.sleep(5)
+time.sleep(2)
 
 # FROM field
 from_city = wait.until(
@@ -50,33 +50,189 @@ tomorrow_button = wait.until(
 )
 tomorrow_button.click()
 
+time.sleep(2)
+
 SearchBuses_button = wait.until(
     EC.element_to_be_clickable((By.XPATH, "//button[@type='submit']"))
 )
 SearchBuses_button.click()
 
-time.sleep(4)
+time.sleep(2)
 
 date_button = wait.until(
-    EC.element_to_be_clickable( (By.XPATH, "//button[.//span[normalize-space()='Fri'] and .//span[normalize-space()='4'] and .//span[normalize-space()='Sep']]") )
+    EC.element_to_be_clickable( (By.XPATH, "//button[.//span[normalize-space()='Thu'] and .//span[normalize-space()='10'] and .//span[normalize-space()='Sep']]") )
 )
 
 date_button.click()
 
-time.sleep(4)
+time.sleep(1)
 # Then Book Now
-Booknow_button = wait.until(
-    EC.element_to_be_clickable((By.XPATH, "(//a[contains(@href, '/book/')]//button[normalize-space()='Book Now'])[1]"))
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+time.sleep(3)
+
+driver.execute_script("window.scrollBy(0, -500);")
+time.sleep(1)
+
+
+driver.execute_script("window.scrollBy(0, -500);")
+
+time.sleep(1)
+driver.execute_script("window.scrollBy(0, -500);")
+
+time.sleep(1)
+driver.execute_script("window.scrollBy(0, -500);")
+
+time.sleep(1)
+driver.execute_script("window.scrollBy(0, -200);")
+
+
+time.sleep(1)# Wait for first Book Now button
+# Wait for first Book Now button
+book_button = wait.until(
+    EC.presence_of_element_located(
+        (By.XPATH, "(//button[normalize-space()='Book Now'])[1]")
+    )
 )
 
-Booknow_button.click()
-# Scroll to Book Now button
-time.sleep(4)
 driver.execute_script(
-    "arguments[0].scrollIntoView({block: 'center'});",book_link
-    )
+    "arguments[0].scrollIntoView({block: 'center'});",
+    book_button
+)
 
-time.sleep(5)
+time.sleep(1)
+
+driver.execute_script(
+    "arguments[0].click();",
+    book_button
+)
+# Click Book Now
+
+
+time.sleep(1)
+
+driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+time.sleep(1)
+
+driver.execute_script("window.scrollBy(0, -500);")
+time.sleep(1)
+
+
+driver.execute_script("window.scrollBy(0, -500);")
+time.sleep(1)
+
+driver.execute_script("window.scrollBy(0, -200);")
+
+
+
+time.sleep(2)
+
+
+
+seat_b1 = wait.until(
+    EC.element_to_be_clickable(
+        (By.XPATH, "//button[.//span[normalize-space()='B1']]")
+    )
+)
+
+seat_b1.click()
+
+time.sleep(1)
+
+seat_b2= wait.until(
+    EC.element_to_be_clickable(
+        (By.XPATH, "//button[.//span[normalize-space()='B2']]")
+    )
+)
+
+seat_b2.click()
+time.sleep(1)
+
+
+seat_b3 = wait.until(
+    EC.element_to_be_clickable(
+        (By.XPATH, "//button[.//span[normalize-space()='B3']]"))
+)
+
+seat_b3.click()
+time.sleep(1)
+
+seat_b4 = wait.until(
+    EC.element_to_be_clickable(
+        (By.XPATH, "//button[.//span[normalize-space()='B4']]"))
+)
+
+seat_b4.click()
+
+time.sleep(1)
+
+
+
+driver.execute_script("window.scrollBy(0, 700);")
+
+time.sleep(1)
+
+Continue_button = wait.until(
+    EC.element_to_be_clickable(
+        (By.XPATH, "//button[normalize-space()='Continue to Passenger Details']")
+    )
+)
+
+Continue_button.click()
+
+time.sleep(1)
+
+Fullname1 = wait.until(
+    EC.visibility_of_element_located(
+        (By.NAME, "passengerName"))
+)
+Fullname1.click()
+
+time.sleep(1)
+
+Enteremail1 = wait.until(
+    EC.visibility_of_element_located(
+        (By.NAME, "passengerEmail"))
+)
+Enteremail1.click()
+time.sleep(1)
+
+
+driver.execute_script("window.scrollBy(0, 200);")
+time.sleep(1)
+
+
+Phonenumber1 = wait.until(
+    EC.visibility_of_element_located(
+        (By.XPATH, "(//input[@type='tel'])[1]"))
+)
+Phonenumber1.click()
+time.sleep(1)
+
+
+
+driver.execute_script("window.scrollBy(0, 200);")
+
+time.sleep(1)
+Contactnumber1 = wait.until(
+    EC.visibility_of_element_located(
+        (By.XPATH, "//input[@placeholder= 'Enter your contact number']")
+    )
+)
+Contactnumber1.send_keys("9769366977")
+
+time.sleep(1)
+Proceed_button = wait.until(
+    EC.element_to_be_clickable(
+        (By.XPATH, "(//button[@type='submit'])[1]"))
+)
+Proceed_button.click()
+time.sleep(3)
+
+
+
+# Wait until booking page opens
+
+
 
 driver.quit()
 
