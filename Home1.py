@@ -58,18 +58,24 @@ SearchBuses_button.click()
 time.sleep(4)
 
 date_button = wait.until(
-    EC.element_to_be_clickable( (By.XPATH, "//button[.//span[normalize-space()='Fri'] and .//span[normalize-space()='4'] and .//span[normalize-space()='Sep']]") )
+    EC.element_to_be_clickable( (By.XPATH, "//button[.//span[normalize-space()='Sat'] and .//span[normalize-space()='5'] and .//span[normalize-space()='Sep']]") )
 )
 
 date_button.click()
 
 time.sleep(4)
 # Then Book Now
-Booknow_button = wait.until(
-    EC.element_to_be_clickable((By.XPATH, "(//a[contains(@href, '/book/')]//button[normalize-space()='Book Now'])[1]"))
+
+book_now_button = wait.until(
+    EC.element_to_be_clickable(
+        (
+            By.XPATH,
+            "//button[contains(normalize-space(), 'Book Now')]"
+        )
+    )
 )
 
-Booknow_button.click()
+book_now_button.click()
 # Scroll to Book Now button
 
 

@@ -75,5 +75,5 @@ Phonenumber = wait.until(
 Phonenumber.send_keys("9769366977")
 
 
-time.sleep()
+time.sleep(5)
 driver.quit()
